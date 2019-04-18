@@ -1,50 +1,29 @@
 import React from 'react';
-import SearchBar from './SearchBar';
-import Youtube from '../api/youtube';
-import VideoList from './VideoList';
-import VideoDetail from './VideoDetail';
+import { Route } from 'react-router-dom';
+import SideBarTab from './SideBar/SideBarTab';
+import Welcome from './Welcome/Welcome';
+import YouTube from './YouTube/YouTubeApp';
+import Twitter from './Twitter/TwitterApp';
+import './SideBar/SideBar.css'
 
 class App extends React.Component {
-  state = {videos: [], selectedVideo : null};
+  state = {isSideBarOpen: false};
 
-  onTermSubmit = async (term) => {
-      const response = await Youtube.get('/search', {
-      params: {
-        q: term
-      }
-    });
-
-    this.setState(
-      {videos:response.data.items ,
-      selectedVideo:response.data.items[0]
-    });
-  };
-
-  onVideoSelect = (video) => {
-    this.setState({selectedVideo:video});
-  };
-
-  componentDidMount() {
-    this.onTermSubmit('Marvel');
+  toogleSideBar = () => {
+    var toogle = !this.state.isSideBarOpen;
+    this.setState({isSideBarOpen:toogle});
   }
 
   render() {
     return(
-          <div className = "ui container">
-            <SearchBar onFormSubmit = {this.onTermSubmit} />
-            <div className="ui grid">
-              <div className = "ui row">
-                <div className = "eleven wide column">
-                  <VideoDetail video = {this.state.selectedVideo} />
-                </div>
-                <div className = "five wide column">
-                  <VideoList onVideoSelect = {this.onVideoSelect} videos = {this.state.videos}/>
-                </div>
-              </div>
-            </div>
-          </div>
-    )
-  }
+      <div>
+        <SideBarTab isSideBarOpen = {this.state.isSideBarOpen} toogleSideBar = {this.toogleSideBar}/>
+        <Route path="/" exact component={Welcome} />
+        <Route path="/youtube" exact component={YouTube} />
+        <Route path="/twitter" exact component={Twitter} />
+      </div>
+    );
+  };
 }
 
 export default App;

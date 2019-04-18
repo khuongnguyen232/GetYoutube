@@ -1,7 +1,7 @@
 import React from 'react'
 
 class SearchBar extends React.Component {
-  state = {searchKey:null};
+  state = {searchKey:null , openSideBar:false};
 
   onSubmitChange = (event) => {
     event.preventDefault();
