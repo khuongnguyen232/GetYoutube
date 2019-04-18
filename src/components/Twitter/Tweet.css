@@ -1,0 +1,13 @@
+.tweet-list {
+  padding-top: 5%;
+  float: right;
+  z-index: -1;
+}
+
+.fa-retweet {
+  margin-right: 1%;
+}
+
+.tweet-list > .ui.card {
+  justify-content: flex-end;
+}
