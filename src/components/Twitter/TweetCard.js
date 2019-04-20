@@ -6,6 +6,9 @@ function adjustTime(time){
 }
 
 const TweetCard = ({tweet}) => {
+  if(!tweet)
+    return(<div>Loading...</div>);
+    
   return(
     <div className="ui card">
       <div className="content">
@@ -20,7 +23,7 @@ const TweetCard = ({tweet}) => {
           <i className="heart outline like icon"> </i>
           {tweet.favorite_count}
         </span>
-        <i class="fas fa-retweet"> </i>
+        <i className="fas fa-retweet"> </i>
         {tweet.retweet_count}
       </div>
     </div>
