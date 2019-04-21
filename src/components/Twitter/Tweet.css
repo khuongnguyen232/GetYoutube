@@ -1,14 +1,17 @@
 .tweet-page {
   display: inline-block;
+  align-items: center;
+  background-color: #1DA1F2;
 }
 
 .ui.card.highlight {
   float: left;
   height: 25%;
   width: 60%;
-  margin-top: 5%;
+  margin-top: 2.5%;
+  margin-left:15%;
   margin-right: auto;
-  margin-left: 10%;
+  margin-bottom: 0;
 }
 
 .ui.card>.image {
@@ -16,22 +19,30 @@
 }
 
 .tweet-list {
-  margin-top: 5%;
+  background-color:white;
+  border: solid #B6BBB5;
+  margin-top: 2.5%;
+  margin-left: 2.5%;
   z-index: -1;
-  margin-right: 5%;
-  float: right;
+  float: left;
+  height: 83vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .fa-retweet {
   margin-right: 1%;
 }
 
-.tweet-list {
-  height: 83vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
 .tweet-list > .ui.card {
   justify-content: flex-end;
+}
+
+.ui.grid.segment {
+  margin: 0 0 0 0;
+}
+
+.ui.label {
+  font-size: 1rem;
+  line-height: 2;
 }

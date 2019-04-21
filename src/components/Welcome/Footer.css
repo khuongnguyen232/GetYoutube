@@ -1,0 +1,38 @@
+#footer {
+  position: fixed;
+  width: 100%;
+  min-height: 12%;
+  background-color: black;
+  color: white;
+  left: 0;
+  bottom: 0;
+}
+
+.ui.segment.fill-black {
+  background-color: black;
+  color: white;
+}
+
+.no-padding-top {
+  padding-top:0 !important;
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-margin{
+  margin: 0 !important;
+}
+
+.social-container {
+  font-size: 20px;
+}
+
+.text-white {
+  color:white;
+}
+
+.welcome-image{
+  margin-top: -1rem;
+  height: 80vh;
+  width: 100vw;
+}

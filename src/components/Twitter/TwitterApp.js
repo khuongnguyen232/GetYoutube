@@ -2,11 +2,12 @@ import React from 'react';
 import Twitter from '../../api/twitter';
 import Header from './Header.js';
 import TweetList from './TweetList';
+import InputForm from './InputForm';
 import './Header.css';
 import './Tweet.css';
 
 class App extends React.Component {
-  state = {name:'Marvel' , count:'5' , list:[]};
+  state = {name:'Marvel' , count:5 , list:[]};
 
   onLoadAPI = async () => {
     const response = await Twitter.get('/',{
@@ -19,14 +20,15 @@ class App extends React.Component {
   }
 
   onNameUpdate = (term) => {
-    this.setState({name:'ManUtd'}, () => {
+    this.setState({name:term}, () => {
       this.onLoadAPI();
     });
   }
 
   onCountUpdate = (term) => {
-    this.setState({count:term});
-    this.onLoadAPI();
+    this.setState({count:term}, () => {
+        this.onLoadAPI();
+    });
   }
 
   componentDidMount() {
@@ -36,11 +38,17 @@ class App extends React.Component {
   render() {
     return(
         <div className = "twitter">
-
           <div className = "ui container">
             <Header />
             <TweetList list = {this.state.list}/>
-            <button className ="tweet-list" type="button" onClick ={this.onNameUpdate}>Change name</button>
+              <div className="ui two column very relaxed stackable grid black inverted segment">
+                <div className="center aligned column">
+                  <InputForm label = "Name" updateVariable = {this.onNameUpdate}/>
+                </div>
+                <div className="center aligned column">
+                  <InputForm label = "Count" updateVariable = {this.onCountUpdate}/>
+                </div>
+            </div>
           </div>
         </div>
     )

@@ -1,14 +1,23 @@
 import React from 'react';
 
+let link = '#';
+
 function adjustTime(time){
   let index = time.indexOf('+');
   return time.slice(0,index);
 }
 
+function adjustText(text){
+  let index = text.indexOf("https");
+  link = text.substr(index,text.length-1);
+  console.log(link);
+  return text.slice(0,index);
+}
+
 const TweetCard = ({tweet}) => {
   if(!tweet)
     return(<div>Loading...</div>);
-    
+
   return(
     <div className="ui card">
       <div className="content">
@@ -16,7 +25,8 @@ const TweetCard = ({tweet}) => {
         <img className="ui avatar image" alt ="Twitter Icon" src={tweet.user.profile_image_url_https} /> {tweet.user.screen_name}
       </div>
       <div className="image">
-        {tweet.text}
+        {adjustText(tweet.text)}
+        <a href = {link}>To Tweet</a>
       </div>
       <div className="content">
         <span className="right floated">

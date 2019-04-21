@@ -6,13 +6,12 @@ const SideBarTab = (props) => {
     <div className = "ui vertical pointing menu">
       {
         props.isSideBarOpen?
-        <SideBar className/> :
+        <SideBar/>:
         <div></div>
       }
       <button className="toogle-btn ui primary button" type="button" onClick = {props.toogleSideBar}>
         Toogle SideBar
       </button>
-
     </div>
     )
 }

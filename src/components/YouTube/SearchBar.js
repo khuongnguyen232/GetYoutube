@@ -1,7 +1,7 @@
 import React from 'react'
 
 class SearchBar extends React.Component {
-  state = {searchKey:null , openSideBar:false};
+  state = {searchKey:null};
 
   onSubmitChange = (event) => {
     event.preventDefault();
@@ -15,12 +15,13 @@ class SearchBar extends React.Component {
 
   render() {
     return(
-      <div className = "search-bar ui segment">
-        <form className = "ui form" onSubmit = {this.onSubmitChange}>
-          <div className = "field">
-            <label>Video Search</label>
-            <input type = "text" onChange = {this.onInputChange} />
+      <div className = "ui segment">
+        <form className = "ui icon input new-query" onSubmit ={this.onSubmitChange}>
+          <div className="ui label">
+            <i class="fab fa-youtube fa-2x"></i>
           </div>
+            <input type = "text" onChange = {this.onInputChange} placeholder="Enter search term"/>
+            <i className="search icon"></i>
         </form>
       </div>
     )

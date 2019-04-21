@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Route } from 'react-router-dom';
 import SideBarTab from './SideBar/SideBarTab';
@@ -15,12 +16,20 @@ class App extends React.Component {
   }
 
   render() {
+    let contentlist = "";
+    if(this.state.isSideBarOpen)
+    {
+      contentlist ="content-blur";
+    }
+
     return(
       <div>
         <SideBarTab isSideBarOpen = {this.state.isSideBarOpen} toogleSideBar = {this.toogleSideBar}/>
-        <Route path="/" exact component={Welcome} />
-        <Route path="/youtube" exact component={YouTube} />
-        <Route path="/twitter" exact component={Twitter} />
+        <div id = "content" className = {contentlist}>
+          <Route path="/" exact component={Welcome} />
+          <Route path="/youtube" exact component={YouTube} />
+          <Route path="/twitter" exact component={Twitter} />
+        </div>
       </div>
     );
   };
