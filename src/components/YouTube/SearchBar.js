@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
   render() {
     return(
       <div className = "ui segment">
-        <form className = "ui icon input new-query" onSubmit ={this.onSubmitChange}>
+        <form className = "ui icon input youtube-query" onSubmit ={this.onSubmitChange}>
           <div className="ui label">
             <i class="fab fa-youtube fa-2x"></i>
           </div>
