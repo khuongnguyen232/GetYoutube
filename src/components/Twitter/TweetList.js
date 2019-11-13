@@ -12,11 +12,11 @@ const TweetList = ({list}) => {
   });
 
   return(
-    <div className = "tweet-page">
-      <TweetHighlight tweet={list[0]} />
-      <div className="tweet-list">
-        {updatedList}
+    <div className = "ui stackable centered grid container">
+      <div class="sixteen wide column">
+        <TweetHighlight tweet={list[0]} />
       </div>
+      {updatedList}
     </div>
   )
 }

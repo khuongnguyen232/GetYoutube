@@ -18,9 +18,9 @@ class SearchBar extends React.Component {
       <div className = "ui segment">
         <form className = "ui icon input youtube-query" onSubmit ={this.onSubmitChange}>
           <div className="ui label">
-            <i className="fab fa-youtube fa-2x"></i>
+            <i className="fab fa-youtube fa-2x">Youtube</i>
           </div>
-            <input type = "text" onChange = {this.onInputChange} placeholder="Enter search term"/>
+            <input type = "text" onChange = {this.onInputChange} placeholder="Enter a keyword to search for a video"/>
             <i className="search icon"></i>
         </form>
       </div>

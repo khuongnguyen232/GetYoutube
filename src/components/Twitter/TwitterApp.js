@@ -2,12 +2,11 @@ import React from 'react';
 import Twitter from '../../api/twitter';
 import Header from './Header.js';
 import TweetList from './TweetList';
-import InputForm from './InputForm';
 import './Header.css';
 import './Tweet.css';
 
 class App extends React.Component {
-  state = {name:'Marvel' , count:5 , list:[]};
+  state = {name:'Marvel' , count:4 , list:[]};
 
   onLoadAPI = async () => {
     const response = await Twitter.get('/',{
@@ -39,16 +38,8 @@ class App extends React.Component {
     return(
         <div className = "twitter">
           <div className = "ui container">
-            <Header />
+            <Header onNameUpdate={this.onNameUpdate} onCountUpdate={this.onCountUpdate}/>
             <TweetList list = {this.state.list}/>
-              <div className="ui two column very relaxed stackable grid black inverted segment">
-                <div className="center aligned column">
-                  <InputForm label = "Name" updateVariable = {this.onNameUpdate}/>
-                </div>
-                <div className="center aligned column">
-                  <InputForm label = "Count" updateVariable = {this.onCountUpdate}/>
-                </div>
-            </div>
           </div>
         </div>
     )

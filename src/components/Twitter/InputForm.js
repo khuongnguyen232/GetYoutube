@@ -14,11 +14,8 @@ class InputForm extends React.Component {
 
   render() {
     return(
-      <form className = "ui icon input new-query" onSubmit ={this.onSubmitChange}>
-      <div className="ui label">
-        {this.props.label}
-      </div>
-        <input type = "text" onChange = {this.onInputChange} placeholder="Enter search term"/>
+      <form className = "ui icon fluid input new-query" onSubmit ={this.onSubmitChange}>
+        <input type = "text" onChange = {this.onInputChange} placeholder={this.props.placeholder}/>
         <i className="search icon"></i>
       </form>
     );
