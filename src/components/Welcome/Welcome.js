@@ -8,7 +8,7 @@ const Welcome = () => {
     <div>
       <div className="ui segment fill-black">
         <h1 className = "ui container center aligned ">
-          Please choose one of the social media app on the left toogle bar
+          Please choose one of the social media app from the above list
         </h1>
         <div className="ui center aligned grid">
           <h4>This project is built with:</h4>

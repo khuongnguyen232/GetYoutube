@@ -5,7 +5,14 @@ import TweetHighlight from './TweetHighlight';
 const TweetList = ({list}) => {
 
   if(list.length === 0)
-    return(<div>Loading...</div>);
+    return(
+      <div class="ui segment">
+        <div class="ui active inverted dimmer">
+          <div class="ui massive text loader">Loading</div>
+        </div>
+        <p></p>
+      </div>
+    );
 
   const updatedList = list.map( (tweet) => {
   return <TweetCard key={tweet.id} tweet={tweet} />;
