@@ -8,7 +8,6 @@ export default Axios.create({
     params: {
       part:'snippet',
       key:KEY,
-      type:'video',
-      maxResults:5
+      type:'video'
     }
 });

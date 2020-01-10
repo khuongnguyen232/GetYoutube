@@ -1,0 +1,5 @@
+.ui.relaxed.divided.list {
+  height: 62vh;
+  overflow-Y: scroll;
+  overflow-X: hidden;
+}

@@ -3,9 +3,9 @@ import React from 'react';
 const VideoDetail = ({video}) => {
   if(!video)
   return(
-    <div class="ui segment">
-      <div class="ui active inverted dimmer">
-        <div class="ui massive text loader">Loading</div>
+    <div className="ui segment">
+      <div className="ui active inverted dimmer">
+        <div className="ui massive text loader">Loading</div>
       </div>
       <p></p>
     </div>
