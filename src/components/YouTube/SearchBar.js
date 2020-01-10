@@ -1,12 +1,14 @@
-import React from 'react'
+import React from 'react';
+import {connect} from 'react-redux';
+import {getSearchTerm} from '../../actions';
 
 class SearchBar extends React.Component {
   state = {searchKey:null};
 
   onSubmitChange = (event) => {
     event.preventDefault();
-    //TODO: make sure to call a Callback
     this.props.onFormSubmit(this.state.searchKey);
+    this.props.getSearchTerm(this.state.searchKey);
   };
 
   onInputChange = (event) => {
@@ -28,4 +30,9 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = (state) => {
+  //console.log(state);
+  return {searchTerm:state.searchTerm}
+}
+
+export default connect(mapStateToProps,{getSearchTerm})(SearchBar);

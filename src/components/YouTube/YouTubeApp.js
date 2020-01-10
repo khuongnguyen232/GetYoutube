@@ -1,24 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import SearchBar from './SearchBar';
 import Youtube from '../../api/youtube';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
+import {fetchVideoList} from '../../actions';
 
 class App extends React.Component {
-  state = {videos: [], selectedVideo : null, numVid:10};
+  state = {selectedVideo : null, numVid:10};
 
   onTermSubmit = async (term) => {
-      const response = await Youtube.get('/search', {
-      params: {
-        q: term,
-        maxResults:this.state.numVid
-      }
-    });
-
-    this.setState(
-      {videos:response.data.items ,
-      selectedVideo:response.data.items[0]
-    });
+    this.props.fetchVideoList(this.state.numVid);
   };
 
   onVideoSelect = (video) => {
@@ -33,13 +26,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.onTermSubmit('Marvel');
+    this.props.fetchVideoList(this.state.numVid);
   }
 
   render() {
+    console.log(this.props.videoList);
     return(
           <div className = "ui container">
-            <SearchBar onFormSubmit = {this.onTermSubmit} />
+            <SearchBar onFormSubmit = {this.onTermSubmit} fetchVideoList={this.props.fetchVideoList}/>
 
             <div className="ui grid">
               <div className = "ui row">
@@ -47,7 +41,7 @@ class App extends React.Component {
                   <VideoDetail video = {this.state.selectedVideo} />
                 </div>
                 <div className = "five wide column">
-                  <VideoList onVideoSelect = {this.onVideoSelect} videos = {this.state.videos} clickMoreVideoButton={this.clickMoreVideoButton}/>
+                  <VideoList onVideoSelect = {this.onVideoSelect} videos = {this.props.videoList} clickMoreVideoButton={this.clickMoreVideoButton}/>
                 </div>
               </div>
             </div>
@@ -56,4 +50,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  //console.log(state);
+  return {videoList:state.videoList.items}
+}
+export default connect(mapStateToProps,{fetchVideoList})(App);
