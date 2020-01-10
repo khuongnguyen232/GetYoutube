@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import SearchBar from './SearchBar';
-import Youtube from '../../api/youtube';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 import {fetchVideoList} from '../../actions';
@@ -10,7 +9,7 @@ import {fetchVideoList} from '../../actions';
 class App extends React.Component {
   state = {selectedVideo : null, numVid:10};
 
-  onTermSubmit = async (term) => {
+  onTermSubmit = async () => {
     this.props.fetchVideoList(this.state.numVid);
   };
 
@@ -21,7 +20,7 @@ class App extends React.Component {
   clickMoreVideoButton = () => {
     let newNumVid = this.state.numVid + 10;
     this.setState({numVid:newNumVid}, () => {
-      this.onTermSubmit('Marvel');
+      this.onTermSubmit();
     });
   }
 
@@ -30,10 +29,10 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props.videoList);
+    console.log(this.state.selectedVideo);
     return(
           <div className = "ui container">
-            <SearchBar onFormSubmit = {this.onTermSubmit} fetchVideoList={this.props.fetchVideoList}/>
+            <SearchBar onTermSubmit = {this.onTermSubmit} fetchVideoList={this.props.fetchVideoList}/>
 
             <div className="ui grid">
               <div className = "ui row">
@@ -52,6 +51,6 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   //console.log(state);
-  return {videoList:state.videoList.items}
+  return {videoList:state.videoList.items};
 }
 export default connect(mapStateToProps,{fetchVideoList})(App);
