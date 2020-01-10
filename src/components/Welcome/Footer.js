@@ -6,7 +6,6 @@ const Footer = (props) => {
       <div className = "ui stackable center aligned grid no-margin">
           <p className ="column center aligned no-margin no-padding">Khuong Nguyen</p>
           <p className = "column center aligned no-margin no-padding">khuongnguyen232@gmail.com</p>
-
       </div>
 
       <div className ="ui three column grid social-container no-padding-top no-margin">
