@@ -8,7 +8,7 @@ The technology used in this project:
 ## Hosted Website
 The hosted version of this project can be found here:
 
-https://socialmediahub.herokuapp.com/
+https://khuongtubehub.herokuapp.com/
 
 ## Note
 Heroku website may not load the first time, if it happens please just reload it shortly.
