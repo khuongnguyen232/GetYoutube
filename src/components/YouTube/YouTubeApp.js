@@ -31,20 +31,12 @@ class App extends React.Component {
 
         <div className="ui grid">
           <div className = "ui row">
-            {this.state.selectedVideo?
-              <React.Fragment>
-                <div className = "eleven wide column">
-                  <VideoDetail video = {this.state.selectedVideo} />
-                </div>
-                <div className = "five wide column">
-                  <VideoList onVideoSelect = {this.onVideoSelect} videos = {this.props.videoList} clickMoreVideoButton={this.clickMoreVideoButton}/>
-                </div>
-              </React.Fragment>
-              :
-              <div className = "sixteen wide column">
-                <VideoList onVideoSelect = {this.onVideoSelect} videos = {this.props.videoList} clickMoreVideoButton={this.clickMoreVideoButton}/>
-              </div>
-            }
+            <div className = "eleven wide column">
+              <VideoDetail video={this.props.selectedVideo}/>
+            </div>
+            <div className = "five wide column">
+              <VideoList videos = {this.props.videoList} clickMoreVideoButton={this.clickMoreVideoButton}/>
+            </div>
           </div>
         </div>
       </div>
@@ -54,6 +46,6 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   //console.log(state);
-  return {videoList:state.videoList.items};
+  return {videoList:state.videoList.items,selectedVideo:state.selectedVideo};
 }
 export default connect(mapStateToProps,{fetchVideoList})(App);

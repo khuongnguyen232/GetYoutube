@@ -8,7 +8,7 @@ export const fetchVideoList = (numVid) => async (dispatch,getState) => {
       maxResults:numVid
     }});
     dispatch({type:'FETCH_VIDEO_LIST',payload:response.data});
-    dispatch({type:'SET_SELECTED_VIDEO',payload:response.data.items[0]})
+    dispatch({type:'SET_SELECTED_VIDEO',payload:response.data.items[0]});
   } catch(err) {
     dispatch({type:'FETCH_VIDEO_LIST_ERR'});
   }

@@ -1,12 +1,12 @@
 ## Social Media Hub Front
 This is a web app project that allow user to display the contents from Youtube and Twitter
 The technology used in this project:
-+ Use React to build the website and handle routings
++ Used React to build the website and handle routings
 + Semantic UI and CSS for styling and responsiveness
-+ Intergrate Youtube and Twitter APIs
++ Intergrate Youtube APIs
 
-## Hosted Website 
-The hosted version of this project can be found here: 
+## Hosted Website
+The hosted version of this project can be found here:
 
 https://socialmediahub.herokuapp.com/
 
