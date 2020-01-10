@@ -1,19 +1,24 @@
 import React from 'react';
-import './Video.css';
+import {connect} from 'react-redux';
+import he from 'he';
 
-const VideoItem = ({video,onVideoSelect}) => {
+import './Video.css';
+import {setSelectedVideo} from '../../actions';
+
+const VideoItem = ({video,setSelectedVideo}) => {
+  const title = he.decode(video.snippet.title);
   return (
     <div onClick = {()=> {
-      onVideoSelect(video);
+      setSelectedVideo(video);
     }} className = "video-item item">
       <img className = "ui image " src ={video.snippet.thumbnails.medium.url} alt ={video.snippet.title}/>
       <div className = "content">
         <div className = "header">
-          {video.snippet.title}
+          {title}
         </div>
       </div>
     </div>
   );
 };
 
-export default VideoItem;
+export default connect(null,{setSelectedVideo})(VideoItem);

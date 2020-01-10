@@ -1,25 +1,23 @@
 import React from 'react';
+import he from 'he';
+
+import Spinner from '../Spinner';
 
 const VideoDetail = ({video}) => {
   if(!video)
   return(
-    <div className="ui segment">
-      <div className="ui active inverted dimmer">
-        <div className="ui massive text loader">Loading</div>
-      </div>
-      <p></p>
-    </div>
+    <Spinner />
   );
 
 const VideoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
-
+  const title = he.decode(video.snippet.title);
   return(
     <div>
       <div className = "ui embed">
-        <iframe title = "video player" src ={VideoSrc} />
+        <iframe title = "video player" src ={VideoSrc} allowFullScreen/>
       </div>
       <div className = "ui segment">
-        <h4 className = "ui header"> {video.snippet.title}</h4>
+        <h4 className = "ui header"> {title}</h4>
         <p>{video.snippet.description}</p>
       </div>
     </div>

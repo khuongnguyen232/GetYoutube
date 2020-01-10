@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Welcome from './Welcome/Welcome';
 import YouTube from './YouTube/YouTubeApp';
@@ -14,13 +13,13 @@ class App extends React.Component {
 
   render() {
     return(
-      <div>
+      <Router>
         <Header />
         <div id = "content">
-          <Route path="/" exact component={Welcome} />
-          <Route path="/youtube" exact component={YouTube} />
+            <Route exact path="/" component={Welcome} />
+            <Route path="/youtube" component={YouTube} />
         </div>
-      </div>
+      </Router>
     );
   };
 }

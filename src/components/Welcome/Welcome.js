@@ -19,7 +19,7 @@ const Welcome = () => {
             <div className="item">Youtube API</div>
         </div>
       </div>
-      <img src={youtube} alt="social media list" className="welcome-image"/>
+      <img src={youtube} alt="youtube" className="welcome-image"/>
       <Footer />
     </div>
   );
