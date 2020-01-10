@@ -1,6 +1,5 @@
 import React from 'react';
 import Spinner from '../Spinner';
-import {connect} from 'react-redux';
 
 const VideoDetail = ({video}) => {
   if(!video)

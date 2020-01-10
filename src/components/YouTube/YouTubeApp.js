@@ -9,10 +9,6 @@ import {fetchVideoList} from '../../actions';
 class App extends React.Component {
   state = {selectedVideo : null, numVid:10};
 
-  onTermSubmit = async () => {
-    this.props.fetchVideoList(this.state.numVid);
-  };
-
   onVideoSelect = (video) => {
     this.setState({selectedVideo:video});
   };
@@ -20,31 +16,38 @@ class App extends React.Component {
   clickMoreVideoButton = () => {
     let newNumVid = this.state.numVid + 10;
     this.setState({numVid:newNumVid}, () => {
-      this.onTermSubmit();
+      this.props.fetchVideoList(this.state.numVid);
     });
   }
 
-  componentDidMount() {
-    this.props.fetchVideoList(this.state.numVid);
-  }
+ componentWillMount() {
+   this.props.fetchVideoList(this.state.numVid);
+ }
 
   render() {
-    console.log(this.state.selectedVideo);
     return(
-          <div className = "ui container">
-            <SearchBar onTermSubmit = {this.onTermSubmit} fetchVideoList={this.props.fetchVideoList}/>
+      <div className = "ui container">
+        <SearchBar onTermSubmit = {() => {this.props.fetchVideoList(this.state.numVid)}} fetchVideoList={this.props.fetchVideoList}/>
 
-            <div className="ui grid">
-              <div className = "ui row">
+        <div className="ui grid">
+          <div className = "ui row">
+            {this.state.selectedVideo?
+              <React.Fragment>
                 <div className = "eleven wide column">
                   <VideoDetail video = {this.state.selectedVideo} />
                 </div>
                 <div className = "five wide column">
                   <VideoList onVideoSelect = {this.onVideoSelect} videos = {this.props.videoList} clickMoreVideoButton={this.clickMoreVideoButton}/>
                 </div>
+              </React.Fragment>
+              :
+              <div className = "sixteen wide column">
+                <VideoList onVideoSelect = {this.onVideoSelect} videos = {this.props.videoList} clickMoreVideoButton={this.clickMoreVideoButton}/>
               </div>
-            </div>
+            }
           </div>
+        </div>
+      </div>
     )
   }
 }

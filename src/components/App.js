@@ -16,8 +16,8 @@ class App extends React.Component {
       <Router>
         <Header />
         <div id = "content">
-            <Route path="/" exact component={Welcome} />
-            <Route path="/youtube" exact component={YouTube} />
+            <Route exact path="/" component={Welcome} />
+            <Route path="/youtube" component={YouTube} />
         </div>
       </Router>
     );
