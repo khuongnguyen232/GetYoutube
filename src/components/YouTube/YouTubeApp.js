@@ -20,7 +20,7 @@ class App extends React.Component {
     });
   }
 
- componentWillMount() {
+ componentDidMount() {
    this.props.fetchVideoList(this.state.numVid);
  }
 
