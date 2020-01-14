@@ -1,6 +1,5 @@
 import React from 'react';
 import VideoItem from './VideoItem';
-import './VideoList.css';
 import Spinner from '../Spinner';
 
 const VideoList = ({videos, onVideoSelect,clickMoreVideoButton}) => {

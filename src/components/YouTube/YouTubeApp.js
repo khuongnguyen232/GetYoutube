@@ -5,9 +5,10 @@ import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 import {fetchVideoList} from '../../actions';
+import './Video.css';
 
 class App extends React.Component {
-  state = {selectedVideo : null, numVid:10};
+  state = {selectedVideo : null, numVid:20};
 
   onVideoSelect = (video) => {
     this.setState({selectedVideo:video});

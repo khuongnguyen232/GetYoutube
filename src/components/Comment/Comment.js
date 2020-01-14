@@ -1,19 +1,32 @@
 import React from 'react';
+
 import API from '../../api/youtube';
+import CommentList from './CommentList';
+import './Comment.css';
 
 class Comment extends React.Component {
+  state = {commentList:[],commentCount:10}
+
   getComment = async () => {
-    const response = await API.get('/commentThreads',{
-      params:{
-      videoId:this.props.id,
-      order:'relevance'
-    }});
-    console.log(response);
+    try {
+      const response = await API.get('/commentThreads',{
+        params:{
+        videoId:this.props.id,
+        order:'relevance',
+        maxResults:this.state.commentCount
+      }});
+      if(response.status === 200) {
+        this.setState({commentList:response.data.items})
+        console.log(response.data.items);
+      }
+    } catch(err) {
+      console.log(err);
+    }
   }
   componentDidMount() {
     this.getComment();
   }
-  
+
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.id !== prevProps.id) {
@@ -23,7 +36,9 @@ class Comment extends React.Component {
 
   render() {
     return (
-      <h1>Comment Section</h1>
+      <div>
+        <CommentList list={this.state.commentList} />
+      </div>
     )
   }
 }

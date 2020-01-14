@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import he from 'he';
 
-import './Video.css';
 import {setSelectedVideo} from '../../actions';
 
 const VideoItem = ({video,setSelectedVideo}) => {

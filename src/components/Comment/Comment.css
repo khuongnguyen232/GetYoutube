@@ -1,0 +1,14 @@
+.ui.diving.header {
+  font-weight: 400;
+  text-transform: uppercase;
+  border-bottom: 1px solid #D3D3D3;
+  width: 100%;
+}
+
+.ui.comments {
+  max-width: 100%;
+}
+
+.ui.comments .comment {
+  padding-bottom:2rem;
+}
