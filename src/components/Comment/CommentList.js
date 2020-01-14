@@ -3,10 +3,10 @@ import React from 'react';
 import CommentBox from './CommentBox.js'
 import Spinner from '../Spinner.js';
 
-const CommentList = ({list}) => {
+const CommentList = ({list,loadMoreComment}) => {
   if(!list) return <Spinner />
 
-  const commentList = list.map( (comment) => {
+  const commentList = list.map((comment) => {
     return (
       <div key={comment.id}>
         <CommentBox comment={comment}/>
@@ -17,9 +17,12 @@ const CommentList = ({list}) => {
   return (
     <div className="ui comments">
       <h3 className="ui diving header">Comments</h3>
-        {commentList}
+      {commentList}
+      <button className="fluid ui button" onClick={loadMoreComment}>Load more videos</button>
     </div>
   );
 };
+
+
 
 export default CommentList;

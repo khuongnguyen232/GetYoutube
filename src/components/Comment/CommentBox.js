@@ -7,6 +7,11 @@ const convertNumber = (num) => {
   return num < 1000? num : Math.round(num / 100) / 10 + `K`
 }
 
+const convertTime = (time) => {
+  const [date,hour] = time.replace('T','.').split('.');
+  return date + ' ' + hour;
+}
+
 const CommentBox = ({comment}) => {
   if(!comment) {
     return <div></div>;
@@ -15,18 +20,21 @@ const CommentBox = ({comment}) => {
   const detail = comment.snippet.topLevelComment.snippet;
   return (
     <div className="comment">
-      <a className="avatar" href="!#">
+      <a className="avatar" href={detail.authorChannelUrl} target="_blank" rel="noopener noreferrer">
         <img src={detail.authorProfileImageUrl} alt="user profile"/>
       </a>
       <div className="content">
-        <a className="author" href="!#">{detail.authorDisplayName}</a>
+        <a className="author" href={detail.authorChannelUrl } target="_blank" rel="noopener noreferrer">{detail.authorDisplayName}</a>
         <div className="metadata">
-          <span className="date">{detail.updatedAt}</span>
+          <span className="date">{convertTime(detail.updatedAt)}</span>
         </div>
         <div className="text" >
           {renderHTML(he.decode(detail.textDisplay))}
         </div>
-        <div className="like-display">{convertNumber(detail.likeCount)} &#9829;</div>
+        <div className="like-display">
+          {convertNumber(detail.likeCount)}
+          <i className="thumbs up outline icon"></i>
+        </div>
         {/*
         <div className="actions">
           <a className="reply" >Reply</a>

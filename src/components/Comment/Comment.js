@@ -7,6 +7,13 @@ import './Comment.css';
 class Comment extends React.Component {
   state = {commentList:[],commentCount:10}
 
+  loadMoreComment = () => {
+    let newCount = this.state.commentCount + 10;
+    this.setState({commentCount:newCount},() => {
+      this.getComment()
+    });
+  }
+
   getComment = async () => {
     try {
       const response = await API.get('/commentThreads',{
@@ -37,7 +44,7 @@ class Comment extends React.Component {
   render() {
     return (
       <div>
-        <CommentList list={this.state.commentList} />
+        <CommentList list={this.state.commentList} loadMoreComment={this.loadMoreComment}/>
       </div>
     )
   }

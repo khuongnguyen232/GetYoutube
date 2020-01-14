@@ -21,10 +21,9 @@
 }
 
 .ui.relaxed.divided.list {
-  height: 160vh;
+  height: 110vh;
   overflow-Y: scroll;
   overflow-X: hidden;
-  height: 160vh;
 }
 
 .ui.relaxed.divided.list::-webkit-scrollbar {
