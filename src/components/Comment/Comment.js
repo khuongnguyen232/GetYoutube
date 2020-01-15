@@ -24,7 +24,7 @@ class Comment extends React.Component {
       }});
       if(response.status === 200) {
         this.setState({commentList:response.data.items})
-        console.log(response.data.items);
+        //console.log(response.data.items);
       }
     } catch(err) {
       console.log(err);

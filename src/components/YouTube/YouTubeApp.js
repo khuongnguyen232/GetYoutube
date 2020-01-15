@@ -46,7 +46,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
+  //console.log(state.videoList.items);
   return {videoList:state.videoList.items,selectedVideo:state.selectedVideo};
 }
 export default connect(mapStateToProps,{fetchVideoList})(App);
