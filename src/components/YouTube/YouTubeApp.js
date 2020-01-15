@@ -5,9 +5,10 @@ import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 import {fetchVideoList} from '../../actions';
+import './Video.css';
 
 class App extends React.Component {
-  state = {selectedVideo : null, numVid:10};
+  state = {selectedVideo : null, numVid:20};
 
   onVideoSelect = (video) => {
     this.setState({selectedVideo:video});
@@ -20,7 +21,7 @@ class App extends React.Component {
     });
   }
 
- componentWillMount() {
+ componentDidMount() {
    this.props.fetchVideoList(this.state.numVid);
  }
 
@@ -45,7 +46,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
+  //console.log(state.videoList.items);
   return {videoList:state.videoList.items,selectedVideo:state.selectedVideo};
 }
 export default connect(mapStateToProps,{fetchVideoList})(App);

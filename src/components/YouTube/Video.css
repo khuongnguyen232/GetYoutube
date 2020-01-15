@@ -19,3 +19,18 @@
 .youtube-query > .ui.label > .fab.fa-youtube{
   color: red;
 }
+
+.ui.relaxed.divided.list {
+  height: 110vh;
+  overflow-Y: scroll;
+  overflow-X: hidden;
+}
+
+.ui.relaxed.divided.list::-webkit-scrollbar {
+    display: block;
+    width: 5px;
+}
+
+.ui.relaxed.divided.list::-webkit-scrollbar-thumb {
+  border-radius: 10%;
+}

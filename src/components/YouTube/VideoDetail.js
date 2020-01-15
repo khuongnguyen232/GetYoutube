@@ -1,6 +1,7 @@
 import React from 'react';
 import he from 'he';
 
+import Comment from '../Comment/Comment';
 import Spinner from '../Spinner';
 
 const VideoDetail = ({video}) => {
@@ -8,7 +9,6 @@ const VideoDetail = ({video}) => {
   return(
     <Spinner />
   );
-
 const VideoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
   const title = he.decode(video.snippet.title);
   return(
@@ -20,6 +20,7 @@ const VideoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
         <h4 className = "ui header"> {title}</h4>
         <p>{video.snippet.description}</p>
       </div>
+      <Comment id={video.id.videoId}/>
     </div>
   );
 };
