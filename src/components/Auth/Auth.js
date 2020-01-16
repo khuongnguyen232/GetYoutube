@@ -1,9 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
+import {signIn, signOut} from '../../actions';
 import API from '../../api/youtube';
 //to get the token API : auth.currentUser.get().getAuthResponse()
 
 class Auth extends React.Component {
-  state = {token:null};
 
   componentDidMount(){
     window.gapi.load('client:auth2', () => {
@@ -14,23 +16,34 @@ class Auth extends React.Component {
       .then( () => {
         window.gapi.client.setApiKey('AIzaSyBomPyOWNJu7xSDDwoJIjHLlQqiEgVSv94');
         this.auth = window.gapi.auth2.getAuthInstance();
-        //this.onAuthChange(this.auth.isSignedIn.get());
-        //this.auth.isSignedIn.listen(this.onAuthChange);
+        this.onAuthChange(this.auth.isSignedIn.get());
+        this.auth.isSignedIn.listen(this.onAuthChange);
       })
     });
   }
 
   onSignInClick = () => {
     this.auth.signIn();
-    this.setState({token:this.auth.currentUser.get().getAuthResponse().access_token})
   };
 
   onSignOutClick = () => {
     this.auth.signOut();
   };
 
+  onAuthChange = (isSignedIn) => {
+    if(isSignedIn) {
+      const user = this.auth.currentUser.get();
+      this.props.signIn(
+        user.getAuthResponse().access_token,
+        user.getBasicProfile().getName(),
+        user.getBasicProfile().getImageUrl()
+      );
+    } else {
+      this.props.signOut();
+    }
+  };
+
 addComment = async (token) => {
-  console.log(token);
   const response = await API({method:'post',url:'/commentThreads',
   data:{
       snippet: {
@@ -48,27 +61,32 @@ addComment = async (token) => {
     'Content-Type':'application/json'
   }
   });
+  //console.log(response);
 };
-
   render() {
-    return(
-      <div>
-        <button className="ui red google button" onClick ={this.onSignOutClick}>
-          <i className="google icon" />
-          Sign Out
-        </button>
-
-        <button className="ui red google button" onClick ={this.onSignInClick}>
-          <i className="google icon" />
-          Sign In
-        </button>
-
-        <button onClick= { () => {this.addComment(this.state.token)}}>
-          Add Comment
-        </button>
-      </div>
-    )
+    if(this.props.auth) {
+      return(
+        <div className= "right menu">
+        {this.props.auth.isSignedIn?
+          <button className="ui red google button" onClick ={this.onSignOutClick}>
+            <i className="google icon" />
+            Sign Out
+          </button>
+          :
+            <button className="ui red google button" onClick ={this.onSignInClick}>
+              <i className="google icon" />
+              Sign In
+            </button>
+        }
+        </div>
+      )
+    }
   }
 }
 
-export default Auth;
+const mapStateToProps = (state) => {
+  //console.log(state);
+  return { auth:state.auth};
+};
+
+export default connect(mapStateToProps,{ signIn, signOut })(Auth);

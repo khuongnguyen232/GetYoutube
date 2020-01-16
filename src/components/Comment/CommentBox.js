@@ -20,8 +20,8 @@ const CommentBox = ({comment}) => {
   const detail = comment.snippet.topLevelComment.snippet;
   return (
     <div className="comment">
-      <a className="avatar" href={detail.authorChannelUrl} target="_blank" rel="noopener noreferrer">
-        <img src={detail.authorProfileImageUrl} alt="user profile"/>
+        <a className="avatar" href={detail.authorChannelUrl} target="_blank" rel="noopener noreferrer">
+        <img className="ui image" src={detail.authorProfileImageUrl} alt="user profile"/>
       </a>
       <div className="content">
         <a className="author" href={detail.authorChannelUrl } target="_blank" rel="noopener noreferrer">{detail.authorDisplayName}</a>

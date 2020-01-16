@@ -13,10 +13,13 @@ const Welcome = () => {
         <div className="ui center aligned grid">
           <h4>This project is built with:</h4>
             <div className="item">React</div>
+            <div className="item">Redux</div>
+            <div className="item">Javascript</div>
             <div className="item">Semantic UI</div>
             <div className="item">HTML5</div>
             <div className="item">CSS3</div>
             <div className="item">Youtube API</div>
+            <div className="item">Google API</div>
         </div>
       </div>
       <img src={youtube} alt="youtube" className="welcome-image"/>
