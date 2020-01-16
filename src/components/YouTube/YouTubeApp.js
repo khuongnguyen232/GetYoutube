@@ -30,7 +30,7 @@ class App extends React.Component {
       <div className = "ui container">
         <SearchBar onTermSubmit = {() => {this.props.fetchVideoList(this.state.numVid)}} fetchVideoList={this.props.fetchVideoList}/>
 
-        <div className="ui grid">
+        <div className="ui stackable grid">
           <div className = "ui row">
             <div className = "eleven wide column">
               <VideoDetail video={this.props.selectedVideo}/>

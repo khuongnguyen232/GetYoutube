@@ -8,15 +8,11 @@
   max-width: 180px;
 }
 
-.ui.icon.input.youtube-query {
-  width: 100%;
-}
-
-.youtube-query > .ui.label {
+.ui.input > .ui.label {
   background: white;
 }
 
-.youtube-query > .ui.label > .fab.fa-youtube{
+.ui.input > .ui.label > .fab.fa-youtube{
   color: red;
 }
 
