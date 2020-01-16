@@ -24,10 +24,26 @@
 
 
 .thumbs.up.outline.icon {
-  cursor:pointer;
+  //cursor:pointer;
   margin-left: .5rem;
 }
 
 .blue {
   color:rgb(6,95,212);
+}
+
+.ui.comments .comment .avatar img{
+  border-radius: 50%;
+}
+
+#commentgrid {
+  border-bottom: 1px solid #D3D3D3;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  margin:0;
+  width: 45rem;
+  height:5rem;
+  resize:none;
 }

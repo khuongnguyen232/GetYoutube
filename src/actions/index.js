@@ -5,7 +5,8 @@ export const fetchVideoList = (numVid) => async (dispatch,getState) => {
   try {
     const response = await API({method:'get',url:'search',params:{
       q: searchTerm,
-      maxResults:numVid
+      maxResults:numVid,
+      type:'video'
     }});
     dispatch({type:'FETCH_VIDEO_LIST',payload:response.data});
     dispatch({type:'SET_SELECTED_VIDEO',payload:response.data.items[0]});
@@ -29,3 +30,17 @@ export const setSelectedVideo = (video) => async(dispatch) => {
     dispatch({type:'SET_SELECTED_VIDEO',payload:video})
   }
 }
+
+//for auth
+export const signIn = (token,name,imageURL) => {
+  return{
+    type:'SIGN_IN',
+    payload:{token,name,imageURL}
+  };
+};
+
+export const signOut = () => {
+  return{
+    type:'SIGN_OUT'
+  };
+};
