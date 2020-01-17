@@ -13,20 +13,26 @@ class Auth extends React.Component {
         scope:'https://www.googleapis.com/auth/youtube.force-ssl'
       })
       .then( () => {
-        window.gapi.client.setApiKey('AIzaSyBomPyOWNJu7xSDDwoJIjHLlQqiEgVSv94');
         this.auth = window.gapi.auth2.getAuthInstance();
         this.onAuthChange(this.auth.isSignedIn.get());
         this.auth.isSignedIn.listen(this.onAuthChange);
+      })
+      .catch((err) => {
+        console.log(err);
       })
     });
   }
 
   onSignInClick = () => {
-    this.auth.signIn();
+    if(this.auth) {
+      this.auth.signIn();
+    }
   };
 
   onSignOutClick = () => {
-    this.auth.signOut();
+    if(this.auth) {
+      this.auth.signOut();
+    }
   };
 
   onAuthChange = (isSignedIn) => {
