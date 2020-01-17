@@ -5,7 +5,7 @@ import CommentList from './CommentList';
 import './Comment.css';
 
 class Comment extends React.Component {
-  state = {commentList:[],commentCount:10}
+  state = {commentList:[],commentCount:10,sortType:'relevance'}
 
   loadMoreComment = () => {
     let newCount = this.state.commentCount + 10;
@@ -19,7 +19,7 @@ class Comment extends React.Component {
       const response = await API.get('/commentThreads',{
         params:{
         videoId:this.props.id,
-        order:'relevance',
+        order:this.state.sortType,
         maxResults:this.state.commentCount
       }});
       if(response.status === 200) {
@@ -34,17 +34,32 @@ class Comment extends React.Component {
     this.getComment();
   }
 
+  onSortButtonClick = (value) => {
+    this.setState({sortType:value}, () => {
+      this.getComment();
+    });
+  }
+
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.id !== prevProps.id) {
       this.getComment();
     }
   }
-
   render() {
     return (
       <div>
-        <CommentList list={this.state.commentList} loadMoreComment={this.loadMoreComment}/>
+        <div className="ui text menu">
+          <div className="item">
+            <h3 className="ui diving header">Comments</h3>
+          </div>
+          <div className="ui buttons">
+            <button className="ui button" onClick={() => this.onSortButtonClick('relevance')}>Popular</button>
+            <div class="or"></div>
+            <button className="ui button" onClick={() => this.onSortButtonClick('time')}>Newest</button>
+          </div>
+        </div>
+        <CommentList list={this.state.commentList} loadMoreComment={this.loadMoreComment} id={this.props.id}/>
       </div>
     )
   }

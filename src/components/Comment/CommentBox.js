@@ -16,7 +16,6 @@ const CommentBox = ({comment}) => {
   if(!comment) {
     return <div></div>;
   }
-
   const detail = comment.snippet.topLevelComment.snippet;
   return (
     <div className="comment">
@@ -35,11 +34,6 @@ const CommentBox = ({comment}) => {
           {convertNumber(detail.likeCount)}
           <i className="thumbs up outline icon"></i>
         </div>
-        {/*
-        <div className="actions">
-          <a className="reply" >Reply</a>
-        </div>
-        */}
 
       </div>
     </div>
