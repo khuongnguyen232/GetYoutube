@@ -24,3 +24,8 @@ And the window of this web app should pop up on your browser at localhost:3000.
 + Add Redux for better state management
 + Fix minor bugs with Video and title wording
 + Improve the style of the Youtube page
+
+## Update#2 (17/01/2019)
++ Display users comment for the video
++ Improve the responsive aspect of the page
++ Fix some minor bug errors
