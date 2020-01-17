@@ -1,0 +1,4 @@
+const CLIENT_ID = '#';
+const YB_API = '#';
+
+export {CLIENT_ID,YB_API};
