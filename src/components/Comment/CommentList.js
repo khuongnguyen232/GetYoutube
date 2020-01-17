@@ -4,7 +4,7 @@ import CommentBox from './CommentBox';
 import Spinner from '../Spinner';
 import UserComment from './UserComment';
 
-const CommentList = ({list,loadMoreComment}) => {
+const CommentList = ({list,loadMoreComment,id}) => {
   if(!list) return <Spinner />
 
   const commentList = list.map((comment) => {
@@ -17,8 +17,7 @@ const CommentList = ({list,loadMoreComment}) => {
 
   return (
     <div className="ui comments">
-      <h3 className="ui diving header">Comments</h3>
-      <UserComment />
+      <UserComment id={id}/>
       {commentList}
       <button className="fluid ui button" onClick={loadMoreComment}>Load more comments</button>
     </div>

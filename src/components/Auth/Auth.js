@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {signIn, signOut} from '../../actions';
-import API from '../../api/youtube';
 //to get the token API : auth.currentUser.get().getAuthResponse()
 
 class Auth extends React.Component {
@@ -43,26 +42,6 @@ class Auth extends React.Component {
     }
   };
 
-addComment = async (token) => {
-  const response = await API({method:'post',url:'/commentThreads',
-  data:{
-      snippet: {
-        videoId: "M7FIvfx5J10",
-        topLevelComment: {
-          snippet: {
-            textOriginal: "Test comment."
-          }
-        }
-      }
-    },
-  headers:{
-    'Authorization': `Bearer ${token}`,
-    'Accept': 'application/json',
-    'Content-Type':'application/json'
-  }
-  });
-  //console.log(response);
-};
   render() {
     if(this.props.auth) {
       return(
@@ -85,7 +64,6 @@ addComment = async (token) => {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
   return { auth:state.auth};
 };
 
