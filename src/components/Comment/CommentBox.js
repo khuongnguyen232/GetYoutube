@@ -1,6 +1,7 @@
 import React from 'react';
 import he from 'he';
 //used to render HTML elements in the comment
+import SubComment from './SubComment';
 import renderHTML from 'react-render-html';
 
 const convertNumber = (num) => {
@@ -17,6 +18,7 @@ const CommentBox = ({comment}) => {
     return <div></div>;
   }
   const detail = comment.snippet.topLevelComment.snippet;
+  console.log(comment);
   return (
     <div className="comment">
         <a className="avatar" href={detail.authorChannelUrl} target="_blank" rel="noopener noreferrer">
@@ -34,7 +36,7 @@ const CommentBox = ({comment}) => {
           {convertNumber(detail.likeCount)}
           <i className="thumbs up outline icon"></i>
         </div>
-
+        <SubComment id={comment.id}/>
       </div>
     </div>
   )

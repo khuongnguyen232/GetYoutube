@@ -55,7 +55,7 @@ class Comment extends React.Component {
           </div>
           <div className="ui buttons">
             <button className="ui button" onClick={() => this.onSortButtonClick('relevance')}>Popular</button>
-            <div class="or"></div>
+            <div className="or"></div>
             <button className="ui button" onClick={() => this.onSortButtonClick('time')}>Newest</button>
           </div>
         </div>
