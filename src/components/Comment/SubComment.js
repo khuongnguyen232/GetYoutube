@@ -1,5 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
+
+import ReplyBox from './ReplyBox';
 import API from '../../api/youtube';
 
 class SubComment extends React.Component {
@@ -36,27 +38,37 @@ class SubComment extends React.Component {
     this.setState({showModal:false});
   }
 
+  getListOfReplies = () => {
+    return this.state.list.map((comment) => {
+      return <ReplyBox comment={comment}/>
+    })
+  }
+
   render() {
     //console.log(this.state.list);
 
     if(this.state.list.length) {
       const customStyles = {
         content : {
-          top                   : '50%',
-          left                  : '50%',
-          marginRight           : '-50%',
-          transform             : 'translate(-50%, -50%)'
+          width : '50%',
+          top : '50%',
+          left : '50%',
+          marginRight : '-50%',
+          transform : 'translate(-50%, -50%)',
+          overflow: 'hidden'
         }
       };
       return (
         <div>
-          <button className="ui primary button" onClick={this.openModal}>Replies</button>
+          <button className="ui primary button" onClick={this.openModal}>{this.state.list.length} Replies</button>
           <Modal
               isOpen={this.state.showModal}
               style={customStyles}
           >
-            <p>{this.state.list.length}</p>
-            <button onClick={this.closeModal}>Close Modal</button>
+            <button className="right menu" onClick={this.closeModal}>Close Modal</button>
+            <div className="ui comments">
+              {this.getListOfReplies()}
+            </div>
           </Modal>
         </div>
       );

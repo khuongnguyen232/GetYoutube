@@ -18,10 +18,10 @@ const CommentBox = ({comment}) => {
     return <div></div>;
   }
   const detail = comment.snippet.topLevelComment.snippet;
-  console.log(comment);
+  //console.log(comment);
   return (
     <div className="comment">
-        <a className="avatar" href={detail.authorChannelUrl} target="_blank" rel="noopener noreferrer">
+      <a className="avatar" href={detail.authorChannelUrl} target="_blank" rel="noopener noreferrer">
         <img className="ui image" src={detail.authorProfileImageUrl} alt="user profile"/>
       </a>
       <div className="content">
