@@ -28,6 +28,7 @@ class SubComment extends React.Component {
 
   componentDidMount() {
     this.getSubComments();
+    Modal.setAppElement('body');
   }
 
   openModal = () => {
@@ -40,7 +41,7 @@ class SubComment extends React.Component {
 
   getListOfReplies = () => {
     return this.state.list.map((comment) => {
-      return <ReplyBox comment={comment}/>
+      return <ReplyBox comment={comment} key={comment.id}/>
     })
   }
 
@@ -50,12 +51,13 @@ class SubComment extends React.Component {
     if(this.state.list.length) {
       const customStyles = {
         content : {
-          width : '50%',
+          width : '30%',
+          height: '50%',
           top : '50%',
           left : '50%',
           marginRight : '-50%',
           transform : 'translate(-50%, -50%)',
-          overflow: 'hidden'
+          padding:0
         }
       };
       return (
@@ -65,7 +67,10 @@ class SubComment extends React.Component {
               isOpen={this.state.showModal}
               style={customStyles}
           >
-            <button className="right menu" onClick={this.closeModal}>Close Modal</button>
+            <button className="ui button float-right" onClick={this.closeModal}>
+              <i id="close-icon" className="x icon"></i>
+            </button>
+
             <div className="ui comments">
               {this.getListOfReplies()}
             </div>
