@@ -16,7 +16,7 @@ const CommentList = ({list,loadMoreComment,id}) => {
   });
 
   return (
-    <div className="ui comments">
+    <div className="ui comments comment-list">
       <UserComment id={id}/>
       {commentList}
       <button className="fluid ui button" onClick={loadMoreComment}>Load more comments</button>
