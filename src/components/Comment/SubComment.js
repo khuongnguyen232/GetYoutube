@@ -5,7 +5,7 @@ import ReplyBox from './ReplyBox';
 import API from '../../api/youtube';
 
 class SubComment extends React.Component {
-  state={showModal:false,list:[],comCount:10};
+  state={showModal:false,list:[],commentCount:10};
 
   getSubComments = async () => {
     if(this.props.id) {
@@ -13,12 +13,12 @@ class SubComment extends React.Component {
         const response = await API.get('./comments',{
           params:{
             part:'snippet',
-            maxResults:this.state.comCount,
+            maxResults:this.state.commentCount,
             parentId:this.props.id
             }
           }
         )
-        this.setState({list:response.data.items});
+        this.setState({list:response.data.items,commentCount:response.data.items.length});
         //console.log(response.data.items)
     } catch(err) {
         console.log(err);
@@ -43,6 +43,13 @@ class SubComment extends React.Component {
     return this.state.list.map((comment) => {
       return <ReplyBox comment={comment} key={comment.id}/>
     })
+  }
+
+  loadMoreComment = () => {
+    let newCount = this.state.commentCount + 10;
+    this.setState({commentCount:newCount},() => {
+      this.getSubComments()
+    });
   }
 
   render() {
@@ -74,6 +81,7 @@ class SubComment extends React.Component {
             <div className="ui comments">
               {this.getListOfReplies()}
             </div>
+            <button className="fluid ui button" onClick={this.loadMoreComment}>Load more replies</button>
           </Modal>
         </div>
       );
