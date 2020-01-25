@@ -4,6 +4,7 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid #D3D3D3;
   width: 100%;
+  top:50%;
 }
 
 .ui.comments.comment-list {
@@ -53,13 +54,16 @@ textarea {
 }
 
 .ui.button.float-right {
-  position: fixed;
-  right:0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left:100%;
   margin-top: 2px;
   margin-right: 0;
   padding: 0;
   width: 2rem;
   height: 2rem;
+  z-index: 20;
 }
 
 #close-icon {

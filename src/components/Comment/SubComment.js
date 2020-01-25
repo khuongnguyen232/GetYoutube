@@ -5,7 +5,7 @@ import ReplyBox from './ReplyBox';
 import API from '../../api/youtube';
 
 class SubComment extends React.Component {
-  state={showModal:false,list:[],commentCount:10};
+  state={showModal:false,list:[],commentCount:50};
 
   getSubComments = async () => {
     if(this.props.id) {
