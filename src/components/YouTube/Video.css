@@ -37,22 +37,15 @@
   font-weight: bold;
 }
 
-.ui.red.button.no-cursor,
-.ui.black.button.no-cursor,
-.ui.basic.red.left.pointing.label.no-cursor,
-.ui.basic.black.left.pointing.label.no-cursor{
-  cursor:context-menu
-}
-
-#float-right {
-  //float: right;
-}
-
-.view-count {
-  position:relative;
-  font-size: 1.5rem;
+.view-count,
+.publish-time {
+  font-size: 1.2rem;
   font-weight: bold;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
-.stat-section {
+.publish-time {
+  float:right;
 }
