@@ -17,7 +17,7 @@
 }
 
 .ui.relaxed.divided.list {
-  height: 120vh;
+  height: 125vh;
   overflow-Y: scroll;
   overflow-X: hidden;
 }

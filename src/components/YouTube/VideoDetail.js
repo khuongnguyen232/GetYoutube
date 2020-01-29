@@ -43,7 +43,8 @@ class VideoDetail extends React.Component {
     const title = he.decode(this.props.video.snippet.title);
     if(this.state.video) {
       const {likeCount,dislikeCount,viewCount} = this.state.video.statistics;
-      const likePercent = parseInt(likeCount,10) / (parseInt(likeCount,10) + parseInt(dislikeCount,10)) * 100;
+      let likePercent = 0;
+      if(likeCount && dislikeCount) likePercent = parseInt(likeCount,10) / (parseInt(likeCount,10) + parseInt(dislikeCount,10)) * 100;
       const likePercentInt = Math.round(likePercent);
       //let likePercent = 20;
       return(
