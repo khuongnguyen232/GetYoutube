@@ -1,4 +1,4 @@
-const INITIAL_STATE = 'Marvel';
+const INITIAL_STATE = 'Software Engineer';
 
 export default(state = INITIAL_STATE, action) => {
   switch (action.type) {

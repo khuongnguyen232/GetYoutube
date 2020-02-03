@@ -5,7 +5,7 @@ import ReplyBox from './ReplyBox';
 import API from '../../api/youtube';
 
 class SubComment extends React.Component {
-  state={showModal:false,list:[],commentCount:10};
+  state={showModal:false,list:[],commentCount:100};
 
   getSubComments = async () => {
     if(this.props.id) {
@@ -81,7 +81,10 @@ class SubComment extends React.Component {
             <div className="ui comments">
               {this.getListOfReplies()}
             </div>
-            <button className="fluid ui button" onClick={this.loadMoreComment}>Load more replies</button>
+            {/*
+              <button className="fluid ui button" onClick={this.loadMoreComment}>Load more replies</button>
+            */}
+
           </Modal>
         </div>
       );
