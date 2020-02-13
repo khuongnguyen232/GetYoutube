@@ -54,25 +54,12 @@ class SubComment extends React.Component {
 
   render() {
     //console.log(this.state.list);
-
     if(this.state.list.length) {
-      const customStyles = {
-        content : {
-          width : '30%',
-          height: '50%',
-          top : '50%',
-          left : '50%',
-          marginRight : '-50%',
-          transform : 'translate(-50%, -50%)',
-          padding:0
-        }
-      };
       return (
         <div>
           <button className="ui primary button" onClick={this.openModal}>{this.state.list.length} Replies</button>
           <Modal
               isOpen={this.state.showModal}
-              style={customStyles}
           >
             <button className="ui button float-right" onClick={this.closeModal}>
               <i id="close-icon" className="x icon"></i>

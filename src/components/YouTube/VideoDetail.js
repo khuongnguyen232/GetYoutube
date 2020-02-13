@@ -30,7 +30,6 @@ class VideoDetail extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
     if (this.props.video !== prevProps.video) {
       this.loadVidStat();
     }

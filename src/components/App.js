@@ -6,10 +6,6 @@ import YouTube from './YouTube/YouTubeApp';
 import Header from './Header/Header';
 
 class App extends React.Component {
-  toogleSideBar = () => {
-    var toogle = !this.state.isSideBarOpen;
-    this.setState({isSideBarOpen:toogle});
-  }
 
   render() {
     return(

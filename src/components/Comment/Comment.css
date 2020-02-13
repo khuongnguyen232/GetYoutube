@@ -69,3 +69,28 @@ textarea {
 #close-icon {
   margin: 0;
 }
+
+.ReactModal__Content,
+.ReactModal__Content--after-open {
+  width : 40%;
+  height: 50%;
+  top : 50% !important;
+  left : 50% !important;
+  margin-right : -50%;
+  transform : translate(-50%, -50%);
+  padding:0
+}
+
+@media screen and (max-width: 992px) {
+  .ReactModal__Content,
+  .ReactModal__Content--after-open {
+    width: 60%
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .ReactModal__Content,
+  .ReactModal__Content--after-open {
+    width: 80%
+  }
+}
