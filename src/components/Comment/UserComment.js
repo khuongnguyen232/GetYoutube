@@ -45,26 +45,24 @@ class UserComment extends React.Component {
   };
 
   render() {
-    if(this.props.auth) {
-      if(this.props.auth.isSignedIn) {
-        return(
-          <div id="commentgrid" className = "ui grid">
-            <div className="two wide column">
-              <img className="ui tiny circular image" src={this.props.auth.imageURL} alt="profile"/>
-            </div>
-            <div className="fourteen wide column">
-              <form className = "ui icon input">
-                <div className="field">
-                  <textarea refs="comment" value={this.state.text} onChange={this.onInputChange}></textarea>
-                  <button className="ui primary button" onClick={this.onSubmitChange}>Comment</button>
-                </div>
-              </form>
-            </div>
+    if(this.props.auth.isSignedIn) {
+      return(
+        <div id="commentgrid" className = "ui grid">
+          <div className="two wide column">
+            <img className="ui tiny circular image" src={this.props.auth.imageURL} alt="profile"/>
           </div>
-        )
-      } else {
-          return <h3 id="commentgrid">Please log in to comment</h3>
-      }
+          <div className="fourteen wide column">
+            <form className = "ui fluid icon input">
+              <div className="field">
+                <textarea refs="comment" value={this.state.text} onChange={this.onInputChange}></textarea>
+                <button className="ui primary button" onClick={this.onSubmitChange}>Comment</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )
+    } else {
+        return <h3 id="commentgrid">Please log in to comment</h3>
     }
   }
 }

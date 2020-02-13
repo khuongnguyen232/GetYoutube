@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 
 import ReplyBox from './ReplyBox';
 import API from '../../api/youtube';
+import UserReplyComment from './UserReplyComment';
 
 class SubComment extends React.Component {
   state={showModal:false,list:[],commentCount:100};
@@ -71,7 +72,7 @@ class SubComment extends React.Component {
             {/*
               <button className="fluid ui button" onClick={this.loadMoreComment}>Load more replies</button>
             */}
-
+            <UserReplyComment id={this.props.id}/>
           </Modal>
         </div>
       );

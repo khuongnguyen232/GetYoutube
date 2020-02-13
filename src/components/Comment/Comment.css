@@ -42,11 +42,18 @@
   margin-bottom: 1rem;
 }
 
+.ui.fluid.icon.input > .field {
+  width: 100%;
+}
+
 textarea {
   margin:0;
-  width: 45rem;
+  padding-left: 2%;
+  width: 95%;
   height:5rem;
   resize:none;
+  z-index: 25;
+  border: 1px solid #ccc;
 }
 
 .ui.buttons .or {
@@ -78,19 +85,21 @@ textarea {
   left : 50% !important;
   margin-right : -50%;
   transform : translate(-50%, -50%);
-  padding:0
+  padding:0;
 }
 
 @media screen and (max-width: 992px) {
   .ReactModal__Content,
   .ReactModal__Content--after-open {
-    width: 60%
+    width: 60%;
+    padding-left: 5%;
   }
 }
 
 @media screen and (max-width: 600px) {
   .ReactModal__Content,
   .ReactModal__Content--after-open {
-    width: 80%
+    width: 80%;
+    padding-left: 5%;
   }
 }
