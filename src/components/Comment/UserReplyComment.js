@@ -27,7 +27,7 @@ class UserReplyComment extends React.Component {
         'Authorization': `Bearer ${token}`,
         'Accept': 'application/json',
         'Content-Type':'application/json'
-      }
+        }
       });
     } catch(err) {
       console.log(err);
@@ -44,10 +44,12 @@ class UserReplyComment extends React.Component {
         <form className = "ui fluid icon input">
           <div className="field">
             <textarea refs="comment" value={this.state.text} onChange={this.onInputChange}></textarea>
-            <button className="ui primary button" onClick={this.onSubmitChange}>Comment</button>
+            <button className="ui button" onClick={this.onSubmitChange}>Reply</button>
           </div>
         </form>
       )
+    } else {
+      return <React.Fragment></React.Fragment>
     }
   }
 }

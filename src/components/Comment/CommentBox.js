@@ -1,8 +1,10 @@
 import React from 'react';
+//used to render HTML elements text
 import he from 'he';
-//used to render HTML elements in the comment
-import SubComment from './SubComment';
 import renderHTML from 'react-render-html';
+
+import SubComment from './SubComment';
+import ReplyButton from './ReplyButton';
 
 const convertNumber = (num) => {
   return num < 1000? num : Math.round(num / 100) / 10 + `K`
@@ -35,6 +37,7 @@ const CommentBox = ({comment}) => {
         <div className="like-display">
           {convertNumber(detail.likeCount)}
           <i className="thumbs up outline icon"></i>
+          <ReplyButton id={comment.id}/>
         </div>
         <SubComment id={comment.id}/>
       </div>
