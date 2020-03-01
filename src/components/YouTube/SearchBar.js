@@ -16,6 +16,7 @@ class SearchBar extends React.Component {
       this.setState({searchKey:event.target.value})
   };
 
+  //a search bar that allow user to enter their input
   render() {
     return(
       <div className = "ui segment">
