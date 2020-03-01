@@ -5,8 +5,10 @@ import {CLIENT_ID} from '../../googleKey';
 import {signIn, signOut} from '../../actions';
 //to get the token API : auth.currentUser.get().getAuthResponse()
 
+//need to include <script src="https://apis.google.com/js/api.js"></script> in the index.html page to use this API
 class Auth extends React.Component {
 
+  //set up the Auth Object here, the scope content is a MUST HAVE to run POST requests (like insert)
   componentDidMount(){
     window.gapi.load('client:auth2', () => {
       window.gapi.client.init({
@@ -46,6 +48,7 @@ class Auth extends React.Component {
     }
   };
 
+  //display Sign In and Sign Out button depend on state: auth.isSignedIn
   render() {
     if(this.props.auth) {
       return(

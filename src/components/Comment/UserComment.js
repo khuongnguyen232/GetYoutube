@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import API from '../../api/youtube';
 
 class UserComment extends React.Component {
+  //text is for user comment
   state = {text:''};
 
   onInputChange = (event) => {
@@ -20,6 +21,7 @@ class UserComment extends React.Component {
     //refresh the comment section to reload our comment
   };
 
+  //token is from Redux state, text is from internal state, videoId is props passed from parent
   addComment = async (token,text,videoId) => {
     try {
       await API({method:'post',url:'/commentThreads',
@@ -44,7 +46,9 @@ class UserComment extends React.Component {
     }
   };
 
+  //display a text box with ability to push a reply to Youtube server
   render() {
+    //only display this when state: auth.isSignedIn === true
     if(this.props.auth.isSignedIn) {
       return(
         <div id="commentgrid" className = "ui grid">

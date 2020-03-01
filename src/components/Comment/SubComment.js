@@ -4,9 +4,12 @@ import Modal from 'react-modal';
 import ReplyBox from './ReplyBox';
 import API from '../../api/youtube';
 
+//handle all the replies of a comment, a Modal will be opened and contain all the replies
 class SubComment extends React.Component {
+  //showModal is condition to show modal or not
   state={showModal:false,list:[],commentCount:100};
 
+  //load all new replies for a specific comment
   getSubComments = async () => {
     if(this.props.id) {
       try {
@@ -19,7 +22,6 @@ class SubComment extends React.Component {
           }
         )
         this.setState({list:response.data.items,commentCount:response.data.items.length});
-        //console.log(response.data.items)
     } catch(err) {
         console.log(err);
       }
@@ -28,6 +30,7 @@ class SubComment extends React.Component {
 
   componentDidMount() {
     this.getSubComments();
+    //important set up for Modal component, Modal will not display if removed
     Modal.setAppElement('body');
   }
 
@@ -39,6 +42,7 @@ class SubComment extends React.Component {
     this.setState({showModal:false});
   }
 
+  //will be called inside this render()
   getListOfReplies = () => {
     return this.state.list.map((comment) => {
       return <ReplyBox comment={comment} key={comment.id}/>
@@ -52,8 +56,8 @@ class SubComment extends React.Component {
     });
   }
 
+  //open a modal to display all the relies
   render() {
-    //console.log(this.state.list);
     if(this.state.list.length) {
       return (
         <div>

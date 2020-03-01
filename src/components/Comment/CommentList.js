@@ -4,6 +4,7 @@ import CommentBox from './CommentBox';
 import Spinner from '../Spinner';
 import UserComment from './UserComment';
 
+//check for empty list, get error if remove it
 const CommentList = ({list,loadMoreComment,id}) => {
   if(!list) return <Spinner />
 
@@ -15,6 +16,7 @@ const CommentList = ({list,loadMoreComment,id}) => {
     )
   });
 
+  //include a box for user to comment and list of all comments, with a button to load more comments
   return (
     <div className="ui comments comment-list">
       <UserComment id={id}/>

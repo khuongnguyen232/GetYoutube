@@ -7,6 +7,7 @@ import './Comment.css';
 class Comment extends React.Component {
   state = {commentList:[],commentCount:10,sortType:'relevance'}
 
+  //will be called inside CommentList component
   loadMoreComment = () => {
     let newCount = this.state.commentCount + 10;
     this.setState({commentCount:newCount},() => {
@@ -14,6 +15,7 @@ class Comment extends React.Component {
     });
   }
 
+  //grab all the comments for VideoDetail component only
   getComment = async () => {
     try {
       const response = await API.get('/commentThreads',{
@@ -24,7 +26,6 @@ class Comment extends React.Component {
       }});
       if(response.status === 200) {
         this.setState({commentList:response.data.items})
-        //console.log(response.data.items);
       }
     } catch(err) {
       console.log(err);
@@ -40,12 +41,14 @@ class Comment extends React.Component {
     });
   }
 
+  //MUST run this method to refresh comment after a new video is loaded
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.id !== prevProps.id) {
       this.getComment();
     }
   }
+  //sort button and a list of all comments
   render() {
     return (
       <div>

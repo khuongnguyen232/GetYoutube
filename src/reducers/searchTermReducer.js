@@ -1,4 +1,4 @@
-const INITIAL_STATE = 'Software Engineer';
+const INITIAL_STATE = 'React Javascript';
 
 export default(state = INITIAL_STATE, action) => {
   switch (action.type) {
