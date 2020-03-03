@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import API from '../../api/youtube';
 
 class UserComment extends React.Component {
+  //text is for user comment
   state = {text:''};
 
   onInputChange = (event) => {
@@ -20,6 +21,7 @@ class UserComment extends React.Component {
     //refresh the comment section to reload our comment
   };
 
+  //token is from Redux state, text is from internal state, videoId is props passed from parent
   addComment = async (token,text,videoId) => {
     try {
       await API({method:'post',url:'/commentThreads',
@@ -44,27 +46,27 @@ class UserComment extends React.Component {
     }
   };
 
+  //display a text box with ability to push a reply to Youtube server
   render() {
-    if(this.props.auth) {
-      if(this.props.auth.isSignedIn) {
-        return(
-          <div id="commentgrid" className = "ui grid">
-            <div className="two wide column">
-              <img className="ui tiny circular image" src={this.props.auth.imageURL} alt="profile"/>
-            </div>
-            <div className="fourteen wide column">
-              <form className = "ui icon input">
-                <div className="field">
-                  <textarea refs="comment" value={this.state.text} onChange={this.onInputChange}></textarea>
-                  <button className="ui primary button" onClick={this.onSubmitChange}>Comment</button>
-                </div>
-              </form>
-            </div>
+    //only display this when state: auth.isSignedIn === true
+    if(this.props.auth.isSignedIn) {
+      return(
+        <div id="commentgrid" className = "ui grid">
+          <div className="two wide column">
+            <img className="ui tiny circular image" src={this.props.auth.imageURL} alt="profile"/>
           </div>
-        )
-      } else {
-          return <h3 id="commentgrid">Please log in to comment</h3>
-      }
+          <div className="fourteen wide column">
+            <form className = "ui fluid icon input">
+              <div className="field">
+                <textarea refs="comment" value={this.state.text} onChange={this.onInputChange}></textarea>
+                <button className="ui primary button" onClick={this.onSubmitChange}>Comment</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )
+    } else {
+        return <h3 id="commentgrid">Please log in to comment</h3>
     }
   }
 }

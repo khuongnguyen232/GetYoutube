@@ -7,7 +7,9 @@ import VideoDetail from './VideoDetail';
 import {fetchVideoList} from '../../actions';
 import './Video.css';
 
+//the base Component for /youtube URL
 class App extends React.Component {
+  //selectedVideo state will be displayed in the video player
   state = {selectedVideo : null, numVid:20};
 
   onVideoSelect = (video) => {
@@ -25,6 +27,7 @@ class App extends React.Component {
    this.props.fetchVideoList(this.state.numVid);
  }
 
+ //contain the search bar, video player, list of video
   render() {
     return(
       <div className = "ui container">
@@ -46,7 +49,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state.videoList.items);
   return {videoList:state.videoList.items,selectedVideo:state.selectedVideo};
 }
 export default connect(mapStateToProps,{fetchVideoList})(App);

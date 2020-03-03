@@ -12,6 +12,8 @@ const VideoList = ({videos, onVideoSelect,clickMoreVideoButton}) => {
   const renderList = videos.map((video) => {
     return <VideoItem key = {video.id.videoId} video={video} onVideoSelect={onVideoSelect} alt ="Youtube Thumbnails" />
   })
+
+  // a list of around 10 video, with load more button
   return(
     <div className="ui relaxed divided list">
       {renderList}

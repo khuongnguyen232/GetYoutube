@@ -1,10 +1,11 @@
 import React from 'react';
+//convert some special character to regular symbol
 import he from 'he';
-
 import Comment from '../Comment/Comment';
 import Spinner from '../Spinner';
 import API from '../../api/youtube';
 
+//remove the unncessary part of the time
 const convertTime = (time) => {
   const [date,hour] = time.replace('T','.').split('.');
   return date + ' ' + hour;
@@ -35,17 +36,19 @@ class VideoDetail extends React.Component {
     }
   }
 
+  //display a video player with an information box about the video
   render() {
   if(!this.props.video) return <Spinner />
 
   const VideoSrc = `https://www.youtube.com/embed/${this.props.video.id.videoId}`;
     const title = he.decode(this.props.video.snippet.title);
+
+    //handle stats for the video
     if(this.state.video) {
       const {likeCount,dislikeCount,viewCount} = this.state.video.statistics;
       let likePercent = 0;
       if(likeCount && dislikeCount) likePercent = parseInt(likeCount,10) / (parseInt(likeCount,10) + parseInt(dislikeCount,10)) * 100;
       const likePercentInt = Math.round(likePercent);
-      //let likePercent = 20;
       return(
         <div>
           <div className = "ui embed">

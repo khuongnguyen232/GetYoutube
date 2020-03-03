@@ -6,6 +6,7 @@ import {setSelectedVideo} from '../../actions';
 
 const VideoItem = ({video,setSelectedVideo}) => {
   const title = he.decode(video.snippet.title);
+  //info about each video (on the right side)
   return (
     <div onClick = {()=> {
       setSelectedVideo(video);

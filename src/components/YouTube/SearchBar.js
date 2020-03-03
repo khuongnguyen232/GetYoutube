@@ -5,6 +5,7 @@ import {getSearchTerm} from '../../actions';
 class SearchBar extends React.Component {
   state = {searchKey:null};
 
+  //getSearchTerm will change the state for Redux state searchKey
   onSubmitChange = (event) => {
     event.preventDefault();
     this.props.getSearchTerm(this.state.searchKey);
@@ -15,6 +16,7 @@ class SearchBar extends React.Component {
       this.setState({searchKey:event.target.value})
   };
 
+  //a search bar that allow user to enter their input
   render() {
     return(
       <div className = "ui segment">
@@ -31,7 +33,6 @@ class SearchBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
   return {searchTerm:state.searchTerm}
 }
 
