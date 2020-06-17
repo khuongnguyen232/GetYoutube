@@ -1,7 +1,6 @@
 ## TubeHub Front
 This is a web app project that allow user to display the contents from Youtube
 The technology used in this project:
-+ Used React to build the website and handle routings
 + Applied Redux for better state management
 + Semantic UI and CSS for styling and responsiveness
 + Intergrated Youtube APIs for receive video information and Google APIs for authentication
@@ -35,3 +34,7 @@ And the window of this web app should pop up on your browser at localhost:3000.
 + Allowed User to comment on the Video once logged in
 + Added Reply Comments for each user comment
 + Fixed minor bugs
+
+## Update#4 (06/17/2020)
++ Remove the home page, now the site will direct to Youtube page directly
++ Improve mobile responsive design experience
