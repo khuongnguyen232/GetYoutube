@@ -19,17 +19,17 @@ If you want to run this locally, please follow these steps (assuming NodeJS is i
 
 And the window of this web app should pop up on your browser at localhost:3000.
 
-## Update#1 (10/01/2020)
+## Update#1 (01/10/2020)
 + Added Redux for better state management
 + Fixed minor bugs with Video and title wording
 + Improved the style of the Youtube page
 
-## Update#2 (17/01/2020)
+## Update#2 (01/17/2020)
 + Displayed users comment for the video
 + Improved the responsive aspect of the page
 + Fixed minor bugs
 
-## Update#3 (07/02/2020)
+## Update#3 (02/07/2020)
 + Added Authentication using Google Log In
 + Allowed User to comment on the Video once logged in
 + Added Reply Comments for each user comment
